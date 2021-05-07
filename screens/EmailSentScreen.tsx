@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import IconFeather from 'react-native-vector-icons/Feather';
-import EvilIcon from 'react-native-vector-icons/EvilIcons';
 
-const SignUpScreen = ({navigation} : any) => {
+const EmailSentScreen = ({navigation} : any) => {
+    const [email, changeEmail] = React.useState<string>('');
 
     return (
-      <View style={styles.signUpContainer}>
-        <Text style={styles.textTitle}>What's about you?</Text>
+      <View style={styles.emailSentContainer}>
+        <Text style={styles.textTitle}>Sent! Check Your Email</Text>
         <Text style={styles.blurText}>
-            Please take a moment to register an account
+          Head over to your email to reset your password.
         </Text>
         <View style={styles.inputContainer}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("SignUpScreen")}
-            style={styles.signInButton}
+            onPress={() => navigation.navigate("SignInScreen")}
+            style={styles.backButton}
           >
             <Text
               style={{
@@ -25,27 +25,34 @@ const SignUpScreen = ({navigation} : any) => {
                 textTransform: "capitalize",
               }}
             >
-              Next
+              Back to Sign In
             </Text>
           </TouchableOpacity>
-          <Text style={{ textAlign: "center", opacity: 0.5, marginTop: 40 }}>
-            Already on Comuni?&nbsp;
-            <Text
-                onPress={() => navigation.navigate('SignInScreen')}
-              style={{ fontWeight: "bold", textDecorationLine: "underline" }}
-            >
-              Sign In
-            </Text>
-          </Text>
         </View>
+        <Text
+          style={{
+            textAlign: "center",
+            opacity: 0.5,
+            marginTop: 390,
+            color: "#000000",
+          }}
+        >
+          Already on Comuni?&nbsp;
+          <Text
+            onPress={() => navigation.navigate("SignInScreen")}
+            style={{ fontWeight: "bold", textDecorationLine: "underline" }}
+          >
+            Sign In
+          </Text>
+        </Text>
       </View>
     );
 }
 
-export default SignUpScreen;
+export default EmailSentScreen;
 
 const styles = StyleSheet.create({
-    signUpContainer: {
+    emailSentContainer: {
         paddingTop: 30,
         alignItems: 'center',
         height: '100%',
@@ -54,17 +61,17 @@ const styles = StyleSheet.create({
     textTitle: {
         fontWeight: "bold",
         textTransform: 'capitalize',
-        marginTop: 100,
+        marginTop: 150,
         fontSize: 25,
         color: '#7da1ed',
     },
     blurText: {
         fontWeight: 'normal',
-        marginTop: 5, 
-        width: '60%',
+        marginTop: 10, 
+        width: '63%',
         textAlign: 'center',
         opacity: 0.5,
-        fontSize: 12,
+        fontSize: 14,
     },
     inputContainer: {
         display: 'flex',
@@ -83,24 +90,15 @@ const styles = StyleSheet.create({
     },
     emailSection: {
         position: 'relative',
-        marginBottom: 20,
-    },
-    passwordSection: {
-        position: 'relative',
+        marginTop: 60,
     },
     emailIcon: {
         opacity: 0.4,
         position: 'absolute',
         top: 18,
     },
-    lockIcon: {
-        opacity: 0.4,
-        position: 'absolute',
-        top: 12,
-        left: -8,
-    },
-    signInButton: {
-        marginTop: 50,
+    backButton: {
+        marginTop: 70,
         width: '100%',
         backgroundColor: '#7da1ed',
         borderRadius: 10,
@@ -109,9 +107,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    forgotPasswordText: {
-        color: '#7da1ed',
-        marginTop: 15,
-        textAlign: 'center',
-    }
 });

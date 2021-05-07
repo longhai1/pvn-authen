@@ -6,7 +6,8 @@ import EvilIcon from 'react-native-vector-icons/EvilIcons';
 const { width } = Dimensions.get("window");
 
 const SignInScreen = ({navigation} : any) => {
-
+    const [email, changeEmail] = React.useState<string>('');
+    const [password, changePassword] = React.useState<string>('');
     return (
       <View style={styles.signInContainer}>
         <Text style={styles.textTitle}>Lorem ipsum dolor sit consectetur</Text>
@@ -30,7 +31,7 @@ const SignInScreen = ({navigation} : any) => {
               size={20}
               color="#000"
             />
-            <TextInput style={styles.customInput} value="Email" />
+            <TextInput style={styles.customInput} placeholder="Email" value={email} onChangeText={changeEmail} />
           </View>
           <View style={styles.passwordSection}>
             <EvilIcon
@@ -39,7 +40,7 @@ const SignInScreen = ({navigation} : any) => {
               size={35}
               color="#000"
             />
-            <TextInput style={styles.customInput} value="Password" />
+            <TextInput style={styles.customInput} secureTextEntry={true} placeholder="Password" value={password} onChangeText={changePassword} />
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate("SignUpScreen")}
@@ -57,10 +58,11 @@ const SignInScreen = ({navigation} : any) => {
               Sign In
             </Text>
           </TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          <Text onPress={() => navigation.navigate('ForgotPasswordScreen')} style={styles.forgotPasswordText}>Forgot Password?</Text>
           <Text style={{ textAlign: "center", opacity: 0.5, marginTop: 10 }}>
             Don't have an account?{" "}
             <Text
+            onPress={() => navigation.navigate('SignUpScreen')}
               style={{ fontWeight: "bold", textDecorationLine: "underline" }}
             >
               Sign Up

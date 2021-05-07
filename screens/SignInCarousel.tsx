@@ -77,7 +77,6 @@ const SignInScreen = ({navigation} : any) => {
             <TextInput style={styles.customInput} value="Password" />
           </View>
           <TouchableOpacity
-            onPress={() => navigation.navigate("SignUpScreen")}
             style={styles.signInButton}
           >
             <Text
@@ -92,7 +91,7 @@ const SignInScreen = ({navigation} : any) => {
               Sign In
             </Text>
           </TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          <Text onPress={() => navigation.navigate('ForgotPasswordScreen')} style={styles.forgotPasswordText}>Forgot Password?</Text>
           <Text style={{ textAlign: "center", opacity: 0.5, marginTop: 10 }}>
             Don't have an account?{" "}
             <Text
