@@ -43,7 +43,6 @@ const SignInScreen = ({navigation} : any) => {
             <TextInput style={styles.customInput} secureTextEntry={true} placeholder="Password" value={password} onChangeText={changePassword} />
           </View>
           <TouchableOpacity
-            onPress={() => navigation.navigate("SignUpScreen")}
             style={styles.signInButton}
           >
             <Text

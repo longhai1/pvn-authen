@@ -1,17 +1,26 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const EmailSentScreen = ({navigation} : any) => {
+const FinishSignUpScreen = ({navigation} : any) => {
     return (
       <View style={styles.emailSentContainer}>
-        <Text style={styles.textTitle}>Sent! Check Your Email</Text>
-        <Text style={styles.blurText}>
-          Head over to your email to reset your password.
+        <Text style={styles.textTitle}>Finish Signing Up</Text>
+        <Text style={styles.subtitleText}>
+          <Text style={styles.blurText}>
+            By clicking Sign Up, you agree to our
+          </Text>
+          &nbsp;
+          <Text
+            style={styles.termText}
+            onPress={() => navigation.navigate("TermAndConditionsScreen")}
+          >
+            Terms & Conditions
+          </Text>
         </Text>
         <View style={styles.textContainer}>
           <TouchableOpacity
             onPress={() => navigation.navigate("SignInScreen")}
-            style={styles.backButton}
+            style={styles.finishButton}
           >
             <Text
               style={{
@@ -19,10 +28,10 @@ const EmailSentScreen = ({navigation} : any) => {
                 fontWeight: "bold",
                 fontSize: 14,
                 marginBottom: 2,
-                textTransform: "capitalize",
+                textTransform: "capitalize"
               }}
             >
-              Back to Sign In
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
@@ -30,8 +39,8 @@ const EmailSentScreen = ({navigation} : any) => {
           style={{
             textAlign: "center",
             opacity: 0.5,
-            marginTop: 390,
-            color: "#000000",
+            marginTop: 355,
+            color: "#000000"
           }}
         >
           Already on Comuni?&nbsp;
@@ -46,7 +55,7 @@ const EmailSentScreen = ({navigation} : any) => {
     );
 }
 
-export default EmailSentScreen;
+export default FinishSignUpScreen;
 
 const styles = StyleSheet.create({
     emailSentContainer: {
@@ -62,20 +71,26 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: '#7da1ed',
     },
-    blurText: {
+    subtitleText: {
         fontWeight: 'normal',
-        marginTop: 10, 
-        width: '63%',
+        marginTop: 40, 
+        width: '80%',
         textAlign: 'center',
-        opacity: 0.5,
         fontSize: 14,
+    },
+    blurText: {
+        color: 'rgba(0,0,0,0.4)',
+    },
+    termText: {
+        color: '#7da1ed', textDecorationLine: "underline",
+        opacity: 1,
     },
     textContainer: {
         display: 'flex',
         width: '100%',
         paddingHorizontal: 15,
     },
-    backButton: {
+    finishButton: {
         marginTop: 70,
         width: '100%',
         backgroundColor: '#7da1ed',
