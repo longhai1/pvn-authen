@@ -1,0 +1,1 @@
+export { default as WhatAboutYouScreen } from './WhatAboutYouScreen';
