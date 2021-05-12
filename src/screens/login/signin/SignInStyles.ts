@@ -28,12 +28,22 @@ export default StyleSheet.create({
     paddingHorizontal: 15
   },
   emailIcon: {
-    opacity: 0.4,
     position: "absolute",
-    top: 18
+    top: 18,
+  },
+  lockIcon: {
+    position: "absolute",
+    top: 12,
+    left: -6,
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: 0,
+    opacity: 0.4,
+    top: 16,
   },
   signInButton: {
-    marginTop: 50,
+    marginTop: 30,
     width: "100%",
     backgroundColor: "#7da1ed",
     borderRadius: 10,
@@ -53,5 +63,12 @@ export default StyleSheet.create({
     marginTop: 50
   },
   accountText: { textAlign: "center", opacity: 0.5, marginTop: 10 },
-  signUpText: { fontWeight: "bold", textDecorationLine: "underline" }
+  signUpText: { fontWeight: "bold", textDecorationLine: "underline" },
+  signInText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 14,
+    marginBottom: 2,
+    textTransform: "capitalize"
+  },
 });

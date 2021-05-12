@@ -8,6 +8,7 @@ import { EmailSentScreen } from './screens/forgot/sent';
 import { BirthdayScreen } from './screens/signup/birthday';
 import { FinishSignUpScreen } from './screens/signup/finish';
 import { TermAndConditionsScreen } from './screens/signup/terms';
+import { PickCategoriesScreen } from './screens/home/pick';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="BirthdayScreen" component={BirthdayScreen} />
         <Stack.Screen name="FinishSignUpScreen" component={FinishSignUpScreen} />
         <Stack.Screen name="TermAndConditionsScreen" component={TermAndConditionsScreen} />
+        <Stack.Screen name="PickCategoriesScreen" component={PickCategoriesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

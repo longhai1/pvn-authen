@@ -81,7 +81,7 @@ const SignInCarouselScreen = ({navigation} : any) => {
             }
             placeholder="Password"
             value={password}
-            marginBot={true}
+            
             onChange={changePassword}
           />
           <TouchableOpacity

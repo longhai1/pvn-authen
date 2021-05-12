@@ -33,7 +33,7 @@ export default StyleSheet.create({
         top: 18,
     },
     signInButton: {
-        marginTop: 50,
+        marginTop: 30,
         width: '100%',
         backgroundColor: '#7da1ed',
         borderRadius: 10,

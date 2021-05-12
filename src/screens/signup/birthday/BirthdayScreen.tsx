@@ -1,11 +1,31 @@
 import * as React from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Platform } from 'react-native';
 import IconFA from 'react-native-vector-icons/FontAwesome';
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
-import DatePicker from "react-native-date-picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from './BirthdayStyles';
 
 const BirthdayScreen = ({navigation} : any) => {
+  const [date, setDate] = React.useState(new Date());
+  const [mode, setMode] = React.useState('date');
+  const [show, setShow] = React.useState(false);
+
+  const onChange = (event: any, selectedDate : any) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+    setShow(false);
+  };
+
+  const showMode = (currentMode:any) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
     return (
       <View style={styles.signUpContainer}>
         <Text style={styles.textTitle}>What's Your Birthday & Gender?</Text>
@@ -22,11 +42,19 @@ const BirthdayScreen = ({navigation} : any) => {
                 color="#000"
               />
               <Text style={styles.timeText}>Month</Text>
-              <TextInput style={styles.birthInput} value="12" />
+              <TouchableOpacity onPress={showDatepicker}>
+                <Text style={styles.birthText}>
+                  {date.toISOString().slice(5, 7)}
+                </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.birthdaySection}>
               <Text style={styles.timeText}>Day</Text>
-              <TextInput style={styles.birthInput} value="5" />
+              <TouchableOpacity onPress={showDatepicker}>
+                <Text style={styles.birthText}>
+                  {date.toISOString().slice(8, 10)}
+                </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.birthdaySection}>
               <IconFA
@@ -36,7 +64,11 @@ const BirthdayScreen = ({navigation} : any) => {
                 color="#000"
               />
               <Text style={styles.timeText}>Year</Text>
-              <TextInput style={styles.birthInput} value="1997" />
+              <TouchableOpacity onPress={showDatepicker}>
+                <Text style={styles.birthText}>
+                  {date.toISOString().slice(0, 4)}
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.inputSection}>
@@ -97,6 +129,16 @@ const BirthdayScreen = ({navigation} : any) => {
             </Text>
           </Text>
         </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )}
       </View>
     );
 }

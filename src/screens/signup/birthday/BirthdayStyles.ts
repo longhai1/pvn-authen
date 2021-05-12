@@ -40,9 +40,9 @@ export default StyleSheet.create({
         borderBottomColor: 'rgba(0,0,0,0.2)',
         borderBottomWidth: 1,
     },
-    birthInput: {
+    birthText: {
         width: '100%',
-        paddingTop: 8,
+        paddingTop: 15,
         paddingBottom: 6,
         paddingLeft: 0,
         fontSize: 14,

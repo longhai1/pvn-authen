@@ -103,7 +103,7 @@ const WhatAboutYouScreen = ({ navigation }: any) => {
           }
           placeholder="Confirm Password*"
           secure={true}
-          marginBot={true}
+          
         />
         <TouchableOpacity
           onPress={() => navigation.navigate("BirthdayScreen")}

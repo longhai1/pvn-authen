@@ -6,10 +6,18 @@ export default StyleSheet.create({
     },
     customInput: {
         width: '100%',
-        padding: 10,
+        paddingTop: 10,
         paddingBottom: 15,
         fontSize: 14,
-        borderBottomColor: 'rgba(0,0,0,0.2)',
         borderBottomWidth: 1,
     },
+    errorText: {
+        fontWeight: "normal",
+        marginTop: -1,
+        textAlign: "left",
+        fontStyle: 'italic',
+        opacity: 0.5,
+        fontSize: 14,
+        color: 'red',
+    }
 });
