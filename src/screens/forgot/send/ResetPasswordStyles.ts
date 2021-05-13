@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
     forgotPasswordContainer: {
@@ -6,6 +8,10 @@ export default StyleSheet.create({
       alignItems: "center",
       height: "100%",
       backgroundColor: "#fff"
+    },
+    contentContainer: {
+      alignItems: 'center',
+      width: width,
     },
     textTitle: {
       fontWeight: "bold",
@@ -43,7 +49,7 @@ export default StyleSheet.create({
     },
     inputContainer: {
       display: "flex",
-      width: "100%",
+      width: width,
       paddingHorizontal: 15
     },
     emailIcon: {
@@ -74,7 +80,7 @@ export default StyleSheet.create({
     alreadyText: {
       textAlign: "center",
       opacity: 0.5,
-      marginTop: 255,
+      marginTop: 295,
       color: "#000000"
     },
     signInText: { 

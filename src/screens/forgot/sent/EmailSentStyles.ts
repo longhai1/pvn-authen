@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
     emailSentContainer: {
@@ -7,6 +9,10 @@ export default StyleSheet.create({
         height: '100%',
         backgroundColor: '#fff',
     },
+    contentContainer: {
+        alignItems: 'center',
+        width: width,
+      },
     textTitle: {
         fontWeight: "bold",
         textTransform: 'capitalize',
@@ -24,7 +30,7 @@ export default StyleSheet.create({
     },
     textContainer: {
         display: 'flex',
-        width: '100%',
+        width: width,
         paddingHorizontal: 15,
     },
     backButton: {

@@ -14,6 +14,10 @@ export default StyleSheet.create({
         fontSize: 25,
         color: '#7da1ed',
     },
+    contentContainer: {
+        alignItems: "center",
+        width: '100%',
+    },
     subtitleText: {
         fontWeight: 'normal',
         marginTop: 40, 

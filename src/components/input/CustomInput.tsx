@@ -58,7 +58,7 @@ const CustomInput = (props: InputProps) => {
       ]}
     >
       {icon}
-      {subIcon && subIcon}
+      <View>{subIcon && subIcon}</View>
       <TextInput
         style={[
           styles.customInput,

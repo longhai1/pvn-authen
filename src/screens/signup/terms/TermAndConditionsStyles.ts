@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const containerWidth = Dimensions.get("window").width * 0.9;
 
 export default StyleSheet.create({
     emailSentContainer: {
@@ -15,6 +17,9 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         paddingTop: 20,
         paddingBottom: 10
+    },
+    contentContainer: {
+        alignItems: 'center'
     },
     textTitle: {
         fontWeight: "bold",
@@ -52,7 +57,7 @@ export default StyleSheet.create({
     },
     textContainer: {
         display: 'flex',
-        width: '90%',
+        width: containerWidth,
         marginHorizontal: 20,
         marginTop: 60,
     },

@@ -7,12 +7,19 @@ export default StyleSheet.create({
     paddingTop: 30,
     alignItems: "center",
     height: "100%",
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+  },
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    alignItems: "center",
   },
   textTitle: {
     fontWeight: "bold",
     marginTop: 20,
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'center',
   },
   blurText: {
     fontWeight: "normal",
@@ -41,6 +48,8 @@ export default StyleSheet.create({
     right: 0,
     opacity: 0.4,
     top: 16,
+    elevation: 1,
+    zIndex: 1,
   },
   signInButton: {
     marginTop: 30,

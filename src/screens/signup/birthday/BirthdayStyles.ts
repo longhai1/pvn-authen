@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get("window");
 
 export default StyleSheet.create({
     signUpContainer: {
@@ -6,6 +8,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         height: '100%',
         backgroundColor: '#fff',
+    },
+    contentContainer: {
+        alignItems: "center",
     },
     textTitle: {
         fontWeight: "bold",
@@ -27,7 +32,7 @@ export default StyleSheet.create({
     },
     inputContainer: {
         display: 'flex',
-        width: '100%',
+        width: width,
         paddingHorizontal: 15,
     },
     customInput: {
@@ -37,8 +42,6 @@ export default StyleSheet.create({
         paddingLeft: 0,
         fontSize: 14,
         color: 'rgba(0,0,0,1)',
-        borderBottomColor: 'rgba(0,0,0,0.2)',
-        borderBottomWidth: 1,
     },
     birthText: {
         width: '100%',
@@ -53,6 +56,8 @@ export default StyleSheet.create({
     inputSection: {
         position: 'relative',
         marginBottom: 20,
+        borderBottomColor: 'rgba(0,0,0,0.2)',
+        borderBottomWidth: 1,
     },
     birthdaySection: {
         position: 'relative',
@@ -82,10 +87,9 @@ export default StyleSheet.create({
         position: 'absolute',
         right: 0,
         top: 16,
-        color: '#6a88e3',
     },
     signUpButton: {
-        marginTop: 120,
+        marginTop: 100,
         width: '100%',
         backgroundColor: '#7da1ed',
         borderRadius: 10,

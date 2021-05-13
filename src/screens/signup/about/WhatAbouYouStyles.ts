@@ -1,4 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get("window");
+
 
 export default StyleSheet.create({
     signUpContainer: {
@@ -7,6 +10,13 @@ export default StyleSheet.create({
         height: '100%',
         backgroundColor: '#fff',
     },
+    container: {
+        flex: 1,
+    },
+    contentContainer: {
+        alignItems: "center",
+        width: '100%',
+      },
     textTitle: {
         fontWeight: "bold",
         textTransform: 'capitalize',
@@ -25,11 +35,11 @@ export default StyleSheet.create({
     },
     inputContainer: {
         display: 'flex',
-        width: '100%',
+        width: width,
         paddingHorizontal: 15,
     },
     customInput: {
-        width: '100%',
+        width: '70%',
         padding: 10,
         paddingBottom: 15,
         paddingLeft: 30,
@@ -67,6 +77,8 @@ export default StyleSheet.create({
         right: 0,
         opacity: 0.4,
         top: 16,
+        elevation: 1,
+        zIndex: 1,
     },
     lockIcon: {
         opacity: 0.4,
