@@ -1,17 +1,15 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get("window");
+const height = Dimensions.get("screen").height;
 
 export default StyleSheet.create({
     forgotPasswordContainer: {
       paddingTop: 30,
       alignItems: "center",
-      height: "100%",
-      backgroundColor: "#fff"
-    },
-    contentContainer: {
-      alignItems: 'center',
-      width: width,
+      maxHeight: height,
+      backgroundColor: "#fff",
+      flex: 1,
     },
     textTitle: {
       fontWeight: "bold",
@@ -81,6 +79,7 @@ export default StyleSheet.create({
       textAlign: "center",
       opacity: 0.5,
       marginTop: 295,
+      marginBottom: 20,
       color: "#000000"
     },
     signInText: { 

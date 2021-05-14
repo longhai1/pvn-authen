@@ -1,22 +1,20 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get("window");
-
+const height = Dimensions.get("screen").height;
 
 export default StyleSheet.create({
     signUpContainer: {
         paddingTop: 30,
         alignItems: 'center',
-        height: '100%',
+        maxHeight: height,
         backgroundColor: '#fff',
+        flex: 1,
+        width: '100%',
     },
     container: {
         flex: 1,
     },
-    contentContainer: {
-        alignItems: "center",
-        width: '100%',
-      },
     textTitle: {
         fontWeight: "bold",
         textTransform: 'capitalize',
@@ -110,6 +108,7 @@ export default StyleSheet.create({
         textAlign: "center",
         opacity: 0.5,
         marginTop: 40,
+        marginBottom: 24,
         color: "#000000"
     },
     signInText: { 

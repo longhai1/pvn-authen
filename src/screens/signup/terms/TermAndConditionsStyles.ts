@@ -1,13 +1,16 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const containerWidth = Dimensions.get("window").width * 0.9;
+const height = Dimensions.get("screen").height;
 
 export default StyleSheet.create({
     emailSentContainer: {
         paddingTop: 30,
         alignItems: 'flex-start',
-        height: '100%',
+        paddingBottom: 50,
+        maxHeight: height,
         backgroundColor: '#fff',
+        flex: 1,
     },
     iconContainer: {
         flexDirection: "row",

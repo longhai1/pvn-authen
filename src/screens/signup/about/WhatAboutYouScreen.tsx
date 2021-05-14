@@ -65,235 +65,240 @@ const WhatAboutYouScreen = ({ navigation }: any) => {
   };
 
   return (
-    <View style={styles.signUpContainer}>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-      >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          style={styles.container}
-          enabled
-        >
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style={styles.contentContainer}>
-              <Text style={styles.textTitle}>What's about you?</Text>
-              <Text style={styles.blurText}>
-                Please take a moment to register an account
-              </Text>
-              <View style={styles.inputContainer}>
-                <CustomInput
-                  icon={
-                    <IconFA
-                      style={styles.signUpIcon}
-                      name="user-o"
-                      size={20}
-                      color="#000"
-                    />
-                  }
-                  placeholder="First Name*"
-                  value={firstName}
-                  onChange={changeFirstName}
-                  color="rgba(0,0,0,1)"
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+      enabled
+    >
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.signUpContainer}>
+          <Text style={styles.textTitle}>What's about you?</Text>
+          <Text style={styles.blurText}>
+            Please take a moment to register an account
+          </Text>
+          <View style={styles.inputContainer}>
+            <CustomInput
+              icon={
+                <IconFA
+                  style={styles.signUpIcon}
+                  name="user-o"
+                  size={20}
+                  color="#000"
                 />
-                <CustomInput
-                  icon={
-                    <IconFA
-                      style={styles.signUpIcon}
-                      name="user-o"
-                      size={20}
-                      color="#000"
-                    />
-                  }
-                  placeholder="Last Name*"
-                  value={lastName}
-                  onChange={changeLastName}
-                  color="rgba(0,0,0,1)"
+              }
+              placeholder="First Name*"
+              value={firstName}
+              onChange={changeFirstName}
+              color="rgba(0,0,0,1)"
+            />
+            <CustomInput
+              icon={
+                <IconFA
+                  style={styles.signUpIcon}
+                  name="user-o"
+                  size={20}
+                  color="#000"
                 />
-                {status === "email" ? (
-                  <CustomInput
-                    icon={
-                      <IconFeather
-                        style={styles.signUpIcon}
-                        name="mail"
-                        size={20}
-                        color="#000"
-                      />
-                    }
-                    placeholder="Email*"
-                    value={email}
-                    onChange={changeEmail}
-                    color="rgba(0,0,0,1)"
-                    error={error}
+              }
+              placeholder="Last Name*"
+              value={lastName}
+              onChange={changeLastName}
+              color="rgba(0,0,0,1)"
+            />
+            {status === "email" ? (
+              <CustomInput
+                icon={
+                  <IconFeather
+                    style={styles.signUpIcon}
+                    name="mail"
+                    size={20}
+                    color="#000"
                   />
-                ) : (
-                  <CustomInput
-                    icon={
-                      <IconFeather
-                        style={styles.signUpIcon}
-                        name="mail"
-                        size={20}
-                        color="#000"
-                      />
-                    }
-                    placeholder="Email*"
-                    value={email}
-                    onChange={changeEmail}
-                    color="rgba(0,0,0,1)"
+                }
+                placeholder="Email*"
+                value={email}
+                onChange={changeEmail}
+                color="rgba(0,0,0,1)"
+                error={error}
+              />
+            ) : (
+              <CustomInput
+                icon={
+                  <IconFeather
+                    style={styles.signUpIcon}
+                    name="mail"
+                    size={20}
+                    color="#000"
                   />
-                )}
-                <View style={styles.horizontalContainer}>
-                  <CustomInput
-                    icon={
-                      <IconFA
-                        style={styles.dropIcon}
-                        name="caret-down"
-                        size={20}
-                        color="#000"
-                      />
-                    }
-                    value="(+84)"
-                    width="20%"
-                    pdLeft={true}
+                }
+                placeholder="Email*"
+                value={email}
+                onChange={changeEmail}
+                color="rgba(0,0,0,1)"
+              />
+            )}
+            <View style={styles.horizontalContainer}>
+              <CustomInput
+                icon={
+                  <IconFA
+                    style={styles.dropIcon}
+                    name="caret-down"
+                    size={20}
+                    color="#000"
                   />
-                  <CustomInput
-                    placeholder="Phone Number*"
-                    width="74%"
-                    pdLeft={true}
-                    value={phoneNumber}
-                    onChange={changePhoneNumber}
-                    color="rgba(0,0,0,1)"
-                  />
-                </View>
-                {status === "password" ? (
-                  <CustomInput
-                    icon={
-                      <EvilIcon
-                        style={styles.lockIcon}
-                        name="lock"
-                        size={35}
-                        color="#000"
-                      />
-                    }
-                    subIcon={
-                      <TouchableOpacity style={styles.eyeIcon} onPress={showPassword}>
-                        <IconFeather
-                          name={show ? "eye-off" : "eye"}
-                          size={20}
-                          color="#000"
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholder="Password*"
-                    value={password}
-                    onChange={changePassword}
-                    secure={show}
-                    error={error}
-                    color="rgba(0,0,0,1)"
-                  />
-                ) : (
-                  <CustomInput
-                    icon={
-                      <EvilIcon
-                        style={styles.lockIcon}
-                        name="lock"
-                        size={35}
-                        color="#000"
-                      />
-                    }
-                    subIcon={
-                      <TouchableOpacity style={styles.eyeIcon} onPress={showPassword}>
-                        <IconFeather
-                          name={show ? "eye-off" : "eye"}
-                          size={20}
-                          color="#000"
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholder="Password*"
-                    value={password}
-                    onChange={changePassword}
-                    secure={show}
-                    color="rgba(0,0,0,1)"
-                  />
-                )}
-                {status === "cfPassword" ? (
-                  <CustomInput
-                    icon={
-                      <EvilIcon
-                        style={styles.lockIcon}
-                        name="lock"
-                        size={35}
-                        color="#000"
-                      />
-                    }
-                    subIcon={
-                      <TouchableOpacity style={styles.eyeIcon} onPress={showConfirmPassword}>
-                        <IconFeather
-                          name={showCfPassword ? "eye-off" : "eye"}
-                          size={20}
-                          color="#000"
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholder="Confirm Password*"
-                    value={cfPassword}
-                    onChange={changeCfPassword}
-                    secure={showCfPassword}
-                    color="rgba(0,0,0,1)"
-                    error={error}
-                  />
-                ) : (
-                  <CustomInput
-                    icon={
-                      <EvilIcon
-                        style={styles.lockIcon}
-                        name="lock"
-                        size={35}
-                        color="#000"
-                      />
-                    }
-                    subIcon={
-                      <TouchableOpacity style={styles.eyeIcon} onPress={showConfirmPassword}>
-                        <IconFeather
-                          name={showCfPassword ? "eye-off" : "eye"}
-                          size={20}
-                          color="#000"
-                        />
-                      </TouchableOpacity>
-                    }
-                    placeholder="Confirm Password*"
-                    value={cfPassword}
-                    onChange={changeCfPassword}
-                    secure={showCfPassword}
-                    color="rgba(0,0,0,1)"
-                  />
-                )}
-                <TouchableOpacity
-                  disabled={isBtnDisabled}
-                  onPress={signUp}
-                  style={[
-                    styles.signInButton,
-                    { opacity: isBtnDisabled ? 0.7 : 1 }
-                  ]}
-                >
-                  <Text style={styles.nextText}>Next</Text>
-                </TouchableOpacity>
-                <Text style={styles.alreadyText}>
-                  Already on Comuni?&nbsp;
-                  <Text
-                    onPress={() => navigation.navigate("SignInScreen")}
-                    style={styles.signInText}
-                  >
-                    Sign In
-                  </Text>
-                </Text>
-              </View>
+                }
+                value="(+84)"
+                width="20%"
+                pdLeft={true}
+              />
+              <CustomInput
+                placeholder="Phone Number*"
+                width="74%"
+                pdLeft={true}
+                value={phoneNumber}
+                onChange={changePhoneNumber}
+                color="rgba(0,0,0,1)"
+              />
             </View>
-          </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+            {status === "password" ? (
+              <CustomInput
+                icon={
+                  <EvilIcon
+                    style={styles.lockIcon}
+                    name="lock"
+                    size={35}
+                    color="#000"
+                  />
+                }
+                subIcon={
+                  <TouchableOpacity
+                    style={styles.eyeIcon}
+                    onPress={showPassword}
+                  >
+                    <IconFeather
+                      name={show ? "eye-off" : "eye"}
+                      size={20}
+                      color="#000"
+                    />
+                  </TouchableOpacity>
+                }
+                placeholder="Password*"
+                value={password}
+                onChange={changePassword}
+                secure={show}
+                error={error}
+                color="rgba(0,0,0,1)"
+              />
+            ) : (
+              <CustomInput
+                icon={
+                  <EvilIcon
+                    style={styles.lockIcon}
+                    name="lock"
+                    size={35}
+                    color="#000"
+                  />
+                }
+                subIcon={
+                  <TouchableOpacity
+                    style={styles.eyeIcon}
+                    onPress={showPassword}
+                  >
+                    <IconFeather
+                      name={show ? "eye-off" : "eye"}
+                      size={20}
+                      color="#000"
+                    />
+                  </TouchableOpacity>
+                }
+                placeholder="Password*"
+                value={password}
+                onChange={changePassword}
+                secure={show}
+                color="rgba(0,0,0,1)"
+              />
+            )}
+            {status === "cfPassword" ? (
+              <CustomInput
+                icon={
+                  <EvilIcon
+                    style={styles.lockIcon}
+                    name="lock"
+                    size={35}
+                    color="#000"
+                  />
+                }
+                subIcon={
+                  <TouchableOpacity
+                    style={styles.eyeIcon}
+                    onPress={showConfirmPassword}
+                  >
+                    <IconFeather
+                      name={showCfPassword ? "eye-off" : "eye"}
+                      size={20}
+                      color="#000"
+                    />
+                  </TouchableOpacity>
+                }
+                placeholder="Confirm Password*"
+                value={cfPassword}
+                onChange={changeCfPassword}
+                secure={showCfPassword}
+                color="rgba(0,0,0,1)"
+                error={error}
+              />
+            ) : (
+              <CustomInput
+                icon={
+                  <EvilIcon
+                    style={styles.lockIcon}
+                    name="lock"
+                    size={35}
+                    color="#000"
+                  />
+                }
+                subIcon={
+                  <TouchableOpacity
+                    style={styles.eyeIcon}
+                    onPress={showConfirmPassword}
+                  >
+                    <IconFeather
+                      name={showCfPassword ? "eye-off" : "eye"}
+                      size={20}
+                      color="#000"
+                    />
+                  </TouchableOpacity>
+                }
+                placeholder="Confirm Password*"
+                value={cfPassword}
+                onChange={changeCfPassword}
+                secure={showCfPassword}
+                color="rgba(0,0,0,1)"
+              />
+            )}
+            <TouchableOpacity
+              disabled={isBtnDisabled}
+              onPress={signUp}
+              style={[
+                styles.signInButton,
+                { opacity: isBtnDisabled ? 0.7 : 1 }
+              ]}
+            >
+              <Text style={styles.nextText}>Next</Text>
+            </TouchableOpacity>
+            <Text style={styles.alreadyText}>
+              Already on Comuni?&nbsp;
+              <Text
+                onPress={() => navigation.navigate("SignInScreen")}
+                style={styles.signInText}
+              >
+                Sign In
+              </Text>
+            </Text>
+          </View>
+        </View>
       </ScrollView>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

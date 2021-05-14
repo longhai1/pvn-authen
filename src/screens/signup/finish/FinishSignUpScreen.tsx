@@ -4,12 +4,11 @@ import styles from './FinishSignUpStyles';
 
 const FinishSignUpScreen = ({navigation} : any) => {
     return (
-      <View style={styles.emailSentContainer}>
-        <ScrollView
+      <ScrollView
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.contentContainer}
         >
+      <View style={styles.emailSentContainer}>
           <Text style={styles.textTitle}>Finish Signing Up</Text>
           <Text style={styles.subtitleText}>
             <Text style={styles.blurText}>
@@ -40,8 +39,8 @@ const FinishSignUpScreen = ({navigation} : any) => {
               Sign In
             </Text>
           </Text>
-        </ScrollView>
       </View>
+        </ScrollView>
     );
 }
 

@@ -6,11 +6,11 @@ import styles from './TermAndConditionsStyles';
 
 const TermAndConditionsScreen = ({navigation} : any) => {
     return (
-      <View style={styles.emailSentContainer}>
-        <ScrollView
+      <ScrollView
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
+      <View style={styles.emailSentContainer}>
           <View style={styles.iconContainer}>
             <View>
               <AntDesignIcon
@@ -50,8 +50,8 @@ const TermAndConditionsScreen = ({navigation} : any) => {
               reprehenderit excepturi tenetur dolores, quibusdam adipisci.
             </Text>
           </View>
-        </ScrollView>
       </View>
+        </ScrollView>
     );
 }
 

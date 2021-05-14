@@ -1,19 +1,17 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("window");
+const height = Dimensions.get("screen").height;
 
 export default StyleSheet.create({
   signInContainer: {
     paddingTop: 30,
     alignItems: "center",
-    height: "100%",
+    maxHeight: height,
     backgroundColor: "#fff",
   },
   container: {
     flex: 1,
-  },
-  contentContainer: {
-    alignItems: "center",
   },
   textTitle: {
     fontWeight: "bold",
@@ -68,10 +66,10 @@ export default StyleSheet.create({
   },
   styledImg: {
     maxWidth: width,
-    maxHeight: 330,
+    height: 330,
     marginTop: 50
   },
-  accountText: { textAlign: "center", opacity: 0.5, marginTop: 10 },
+  accountText: { textAlign: "center", opacity: 0.5, marginTop: 10, marginBottom: 18 },
   signUpText: { fontWeight: "bold", textDecorationLine: "underline" },
   signInText: {
     color: "#fff",

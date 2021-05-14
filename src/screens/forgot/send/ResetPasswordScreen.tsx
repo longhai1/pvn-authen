@@ -33,12 +33,11 @@ const ResetPasswordScreen = ({ navigation }: any) => {
   };
 
   return (
-    <View style={styles.forgotPasswordContainer}>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
-      >
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
+    >
+      <View style={styles.forgotPasswordContainer}>
         <Text style={styles.textTitle}>Reset Your Password</Text>
         <Text style={styles.blurText}>
           Enter your email address & we'll send you a new password to reset your
@@ -103,8 +102,8 @@ const ResetPasswordScreen = ({ navigation }: any) => {
             </Text>
           </Text>
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 

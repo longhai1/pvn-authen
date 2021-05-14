@@ -47,12 +47,11 @@ const BirthdayScreen = ({navigation} : any) => {
   };
 
     return (
-      <View style={styles.signUpContainer}>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.contentContainer}
-        >
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.signUpContainer}>
           <Text style={styles.textTitle}>What's Your Birthday & Gender?</Text>
           <Text style={styles.blurText}>
             Please note that all information is strictly confidental.
@@ -149,8 +148,8 @@ const BirthdayScreen = ({navigation} : any) => {
               onChange={onChange}
             />
           )}
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
 }
 

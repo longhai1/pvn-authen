@@ -4,12 +4,11 @@ import styles from './EmailSentStyles';
 
 const EmailSentScreen = ({navigation} : any) => {
     return (
-      <View style={styles.emailSentContainer}>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.contentContainer}
-        >
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.emailSentContainer}>
           <Text style={styles.textTitle}>Sent! Check Your Email</Text>
           <Text style={styles.blurText}>
             Head over to your email to reset your password.
@@ -31,8 +30,8 @@ const EmailSentScreen = ({navigation} : any) => {
               Sign In
             </Text>
           </Text>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
 }
 

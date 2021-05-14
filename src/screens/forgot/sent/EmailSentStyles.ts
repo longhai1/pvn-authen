@@ -1,18 +1,16 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get("window");
+const height = Dimensions.get("screen").height;
 
 export default StyleSheet.create({
     emailSentContainer: {
         paddingTop: 30,
         alignItems: 'center',
-        height: '100%',
+        maxHeight: height,
         backgroundColor: '#fff',
+        flex: 1,
     },
-    contentContainer: {
-        alignItems: 'center',
-        width: width,
-      },
     textTitle: {
         fontWeight: "bold",
         textTransform: 'capitalize',
@@ -54,6 +52,7 @@ export default StyleSheet.create({
         textAlign: "center",
         opacity: 0.5,
         marginTop: 390,
+        marginBottom: 18,
         color: "#000000"
     },
     signInText: { 
