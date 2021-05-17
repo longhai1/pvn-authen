@@ -1,26 +1,42 @@
 import * as React from "react";
-import { View, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform } from "react-native";
+import { View, Text, Image, TouchableOpacity, KeyboardAvoidingView, ScrollView, Platform, AsyncStorage } from "react-native";
 import IconFeather from "react-native-vector-icons/Feather";
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import { CustomInput } from "../../../components/input";
 import { emailValidate } from '../../../helper/emailValidation';
+import { retrieveData } from '../../../helper/asyncStorage';
 import styles from "./SignInStyles";
+import { connect } from 'react-redux';
+import loginActions from '../../../actions/loginAction';
+import { loginState } from '../../../reducers/loginReducer';
 
 type UiSignInStatus =
   | ''
   | 'email'
   | 'password';
 
-const SignInScreen = ({ navigation }: any) => {
+interface SignInProps {
+  login: (email: string, password: string) => void;
+  loginState: loginState;
+  navigation: any;
+}
+
+const SignInScreen = (props : SignInProps) => {
+  const {loginState, login, navigation} = props;
   const [email, changeEmail] = React.useState<string>("");
   const [password, changePassword] = React.useState<string>("");
   const [show, setShow] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string>("");
   const [status, setStatus] = React.useState<UiSignInStatus>('');
   const [passwordStatus, setPasswordStatus] = React.useState<UiSignInStatus>('');
+  const loginStatus  = retrieveData('LoginStatus');
 
   React.useEffect(() => {
-    setError('')
+    console.log(loginState.isLoggedIn);
+  }, [loginState.isLoggedIn]);
+
+  React.useEffect(() => {
+    setError('');
   }, [email, password]);
   
   const isBtnDisabled = React.useMemo(() => {
@@ -44,7 +60,10 @@ const SignInScreen = ({ navigation }: any) => {
     } else {
       changeEmail('');
       changePassword('');
-      navigation.navigate("PickCategoriesScreen");
+      login(email, password);
+      if (loginState.isLoggedIn) {
+        navigation.navigate("PickCategoriesScreen");
+      }
     }
   };
 
@@ -61,7 +80,7 @@ const SignInScreen = ({ navigation }: any) => {
           <Text style={styles.textTitle}>
             Lorem ipsum dolor sit consectetur
           </Text>
-          <Text style={styles.blurText}>
+          <Text style={styles.blurText} onPress={() => console.log(loginState.isLoggedIn)}>
             Grow your business fast with online order system
           </Text>
           <Image
@@ -178,7 +197,7 @@ const SignInScreen = ({ navigation }: any) => {
             )}
 
             <TouchableOpacity
-              disabled={isBtnDisabled}
+              disabled={isBtnDisabled || loginState.isLoading}
               style={[
                 styles.signInButton,
                 { opacity: isBtnDisabled ? 0.7 : 1 }
@@ -209,4 +228,16 @@ const SignInScreen = ({ navigation }: any) => {
   );
 };
 
-export default SignInScreen;
+function mapStateToProps(state: any) {
+  return {
+    loginState: state.login
+  }
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return {
+    login: (email: string, password: string) => dispatch(loginActions.actionLogin({email, password})),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignInScreen);

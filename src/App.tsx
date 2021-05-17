@@ -9,12 +9,15 @@ import { BirthdayScreen } from './screens/signup/birthday';
 import { FinishSignUpScreen } from './screens/signup/finish';
 import { TermAndConditionsScreen } from './screens/signup/terms';
 import { PickCategoriesScreen } from './screens/home/pick';
+import { Provider } from 'react-redux';
+import { store }  from './configs/redux';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
       <Stack.Navigator
         initialRouteName="SignInScreen" headerMode='none'
       >
@@ -28,5 +31,6 @@ export default function App() {
         <Stack.Screen name="PickCategoriesScreen" component={PickCategoriesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    </Provider>
   );
 }
