@@ -4,7 +4,7 @@ import IconFeather from "react-native-vector-icons/Feather";
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import { CustomInput } from "../../../components/input";
 import { emailValidate } from '../../../helper/emailValidation';
-import { retrieveData } from '../../../helper/asyncStorage';
+import { retrieveData, importData } from '../../../helper/asyncStorage';
 import styles from "./SignInStyles";
 import { connect } from 'react-redux';
 import loginActions from '../../../actions/loginAction';
@@ -29,11 +29,28 @@ const SignInScreen = (props : SignInProps) => {
   const [error, setError] = React.useState<string>("");
   const [status, setStatus] = React.useState<UiSignInStatus>('');
   const [passwordStatus, setPasswordStatus] = React.useState<UiSignInStatus>('');
-  const loginStatus  = retrieveData('LoginStatus');
 
   React.useEffect(() => {
-    console.log(loginState.isLoggedIn);
-  }, [loginState.isLoggedIn]);
+    retrieveData('LoginStatus').then((status) => {
+      if (status === 'true') {
+        navigation.navigate("PickCategoriesScreen");
+        console.log('status', status);
+      } else {
+        console.log('error')
+      }
+    })
+  }, []);
+
+  React.useEffect(() => {
+    importData();
+  }, [])
+
+  React.useEffect(() => {
+    console.log(`Login status: ${loginState.isLoggedIn}`);
+    if (loginState.isLoggedIn) {
+      navigation.navigate("PickCategoriesScreen");
+    }
+  }, [loginState.isLoggedIn])
 
   React.useEffect(() => {
     setError('');
@@ -61,9 +78,6 @@ const SignInScreen = (props : SignInProps) => {
       changeEmail('');
       changePassword('');
       login(email, password);
-      if (loginState.isLoggedIn) {
-        navigation.navigate("PickCategoriesScreen");
-      }
     }
   };
 

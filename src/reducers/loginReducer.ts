@@ -28,7 +28,7 @@ const loginReducer = (state : loginState = initState, { type , payload } : Actio
       case "LOGIN_SUCCESS":
         return {
           ...state,
-          jwtToken: payload.jwtToken,
+          jwtToken: payload.jwt_token,
           isLoading: false,
           isLoggedIn: true,
           error: ""
@@ -39,6 +39,11 @@ const loginReducer = (state : loginState = initState, { type , payload } : Actio
           isLoading: false,
           error: "Login fail"
         };
+      case "LOGOUT": 
+        return {
+          ...state, 
+          initState
+        }
       default:
         return state;
     }

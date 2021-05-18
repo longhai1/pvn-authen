@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 
 function* saveTokenToStore(data : any) {
   yield AsyncStorage.multiSet(
-    [['JwtToken', data.jwt_token], ['LoginStatus', 'true']],
+    [['LoginStatus', 'true']],
     err => {
       console.log('ERROR saveTokenToStore: ', err);
     },

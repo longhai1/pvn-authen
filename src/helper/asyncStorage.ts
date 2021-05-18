@@ -10,3 +10,15 @@ export const retrieveData = async (item : string) => {
       console.log(error);
     }
 };
+
+export const importData = async () => {
+  try {
+    // AsyncStorage.removeItem('LoginStatus');
+    const keys = await AsyncStorage.getAllKeys();
+    const result = await AsyncStorage.multiGet(keys);
+    console.log(result);
+    return result.map((req : any) => req).forEach(console.log);
+  } catch (error) {
+    console.error(error)
+  }
+}

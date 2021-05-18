@@ -12,9 +12,14 @@ export const actionLogin = (payload : any) => ({
     type: 'LOGIN_FAILURE',
     payload,
   });
+
+  export const logoutSuccess = () => ({
+    type: 'LOGOUT',
+  })
   
   export default {
     actionLogin,
     loginSuccess,
     loginFailure,
+    logoutSuccess,
   };
