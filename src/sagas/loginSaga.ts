@@ -14,15 +14,17 @@ function* saveTokenToStore(data : any) {
 
 function* postLoginAction(email : string, password : string) {
   const {response, error} = yield call(request.login, email, password);
-  if (response.data.status === 200) {
-    yield put({ type: 'LOGIN_SUCCESS', payload: response.data.data });
-    yield call(saveTokenToStore, response.data.data.jwt_token);
-  } else  {
+  if (response) {
+    if (response.data.status === 200) {
+      yield put({ type: 'LOGIN_SUCCESS', payload: response.data.data });
+      yield call(saveTokenToStore, response.data.data.jwt_token);
+    }
+  } else if (error) {
     yield put({ type: 'LOGIN_FAILURE', payload: error.response.data.message })
   }
+  yield put({ type: 'REMOVE_LOGIN'});
 }
 
 export default function*(action : any) {
-  console.log('Login Saga - Action', action);
   yield call(postLoginAction, action.payload.email, action.payload.password);
 }

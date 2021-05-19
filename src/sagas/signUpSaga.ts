@@ -4,20 +4,16 @@ import { requestParams } from '../services/auth.type';
 
 function* postSignUpAction(payload: requestParams) {
   const { response, error } = yield call(request.signUp, payload);
-  console.log(
-    `Sign Up Saga - postSignUpAction: ${payload}`,
-  );
   if (response) {
-    console.log(response)
-    yield put({ type: 'SIGNUP_SUCCESS' });
-  } else  {
-    console.log(error);
-    yield put({ type: 'SIGNUP_FAILURE' });
+    if (response.data.status === 200) {
+      yield put({ type: 'SIGNUP_SUCCESS' });
+    }
+  } else if (error) {
+    yield put({ type: 'SIGNUP_FAILURE', payload: error.response.data.message });
   }
   yield put({ type: 'REMOVE_SIGNUP' });
 }
 
 export default function*(action : any) {
-  console.log('Sign Up Saga - Action', action);
   yield call(postSignUpAction, action.payload);
 }

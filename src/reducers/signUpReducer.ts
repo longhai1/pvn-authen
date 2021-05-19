@@ -34,7 +34,7 @@ const signUpReducer = (state : signUpState = initState, { type, payload } : Acti
         return {
           ...state,
           isLoading: false,
-          error: "Sign up failed"
+          error: payload
         };
       case "REMOVE_SIGNUP": 
         return {

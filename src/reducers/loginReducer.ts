@@ -40,6 +40,11 @@ const loginReducer = (state : loginState = initState, { type , payload } : Actio
           isLoading: false,
           error: payload
         };
+      case "REMOVE_LOGIN": 
+        return {
+          ...state,
+          isLoading: false
+        }
       case "LOGOUT": 
         return {
           ...state, 
