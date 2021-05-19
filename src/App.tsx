@@ -9,6 +9,7 @@ import { BirthdayScreen } from './screens/signup/birthday';
 import { FinishSignUpScreen } from './screens/signup/finish';
 import { TermAndConditionsScreen } from './screens/signup/terms';
 import { PickCategoriesScreen } from './screens/home/pick';
+import { SplashScreen } from './screens/splash';
 import { Provider } from 'react-redux';
 import { store }  from './configs/redux';
 
@@ -19,8 +20,9 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SignInScreen" headerMode='none'
+        initialRouteName="SplashScreen" headerMode='none'
       >
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="SignInScreen" component={SignInScreen} />
         <Stack.Screen name="WhatAboutYouScreen" component={WhatAboutYouScreen} />
         <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />

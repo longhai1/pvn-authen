@@ -4,7 +4,6 @@ import IconFeather from "react-native-vector-icons/Feather";
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 import { CustomInput } from "../../../components/input";
 import { emailValidate } from '../../../helper/emailValidation';
-import { retrieveData, importData } from '../../../helper/asyncStorage';
 import styles from "./SignInStyles";
 import { connect } from 'react-redux';
 import loginActions from '../../../actions/loginAction';
@@ -31,21 +30,6 @@ const SignInScreen = (props : SignInProps) => {
   const [passwordStatus, setPasswordStatus] = React.useState<UiSignInStatus>('');
 
   React.useEffect(() => {
-    retrieveData('LoginStatus').then((status) => {
-      if (status === 'true') {
-        navigation.navigate("PickCategoriesScreen");
-        console.log('status', status);
-      } else {
-        console.log('error')
-      }
-    })
-  }, []);
-
-  React.useEffect(() => {
-    importData();
-  }, [])
-
-  React.useEffect(() => {
     console.log(`Login status: ${loginState.isLoggedIn}`);
     if (loginState.isLoggedIn) {
       navigation.navigate("PickCategoriesScreen");
@@ -55,6 +39,13 @@ const SignInScreen = (props : SignInProps) => {
   React.useEffect(() => {
     setError('');
   }, [email, password]);
+
+  React.useEffect(() => {
+    if (loginState.error !== "") {
+      setStatus('email');
+      setError(loginState.error);
+    }
+  }, [loginState.error]);
   
   const isBtnDisabled = React.useMemo(() => {
     return email == '' || password == '';

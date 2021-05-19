@@ -1,20 +1,22 @@
-export const actionSignUp = (payload : any) => ({
-    type: 'HANDLE_SIGNUP',
-    payload,
-  });
+import { requestParams } from '../services/auth.type';
+
+export const actionSignUp = (payload : requestParams) => ({
+  type: 'HANDLE_SIGNUP',
+  payload,
+});
   
-  export const signUpSuccess = (payload : any) => ({
-    type: 'SIGNUP_SUCCESS',
-    payload,
-  });
+export const signUpSuccess = (payload : requestParams) => ({
+  type: 'SIGNUP_SUCCESS',
+  payload,
+});
   
-  export const signUpFailure = (payload : any) => ({
-    type: 'SIGNUP_FAILURE',
-    payload,
-  });
+export const signUpFailure = (payload : requestParams) => ({
+  type: 'SIGNUP_FAILURE',
+  payload,
+});
   
-  export default {
-    actionSignUp,
-    signUpSuccess,
-    signUpFailure,
-  };
+export default {
+  actionSignUp,
+  signUpSuccess,
+  signUpFailure,
+};

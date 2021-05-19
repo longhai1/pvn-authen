@@ -1,4 +1,3 @@
-import { create } from 'apisauce';
 import axios from 'axios';
 import { requestParams } from './auth.type';
 
@@ -11,22 +10,16 @@ const login = (email : string, password : string) => {
         email: email,
         password: password,
     })
-    .then(response => {
-      return response;
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    .then(response => ({ response }))
+    .catch(error => ({ error }))
 }
 
 const signUp = (params : requestParams) => {
-  return axios.post(apiUrl, params)
-    .then(response => {
-      return response;
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  console.log(`Request: ${params.email} ${params.password} ${params.fullname} ${params.number_phone}`);
+  return axios
+    .post(apiUrl, params)
+    .then(response => ({ response }))
+    .catch(error => ({ error }))
 }
 
 export default {

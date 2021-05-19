@@ -4,7 +4,13 @@ import IconFeather from "react-native-vector-icons/Feather";
 import IconFA from "react-native-vector-icons/FontAwesome";
 import EvilIcon from "react-native-vector-icons/EvilIcons";
 import { emailValidate } from '../../../helper/emailValidation';
+import { getVideoRequestParams } from '../../../helper/getVideoRequestParams';
+import { requestParams } from '../../../services/auth.type';
+import { RootState } from '../../../reducers/rootReducers'
+import { connect } from 'react-redux';
+import signUpAction from '../../../actions/signUpAction';
 import { CustomInput } from "../../../components/input";
+import { signUpState } from '../../../reducers/signUpReducer';
 import styles from "./WhatAbouYouStyles";
 
 type UiSignUpStatus =
@@ -13,7 +19,14 @@ type UiSignUpStatus =
   | 'password'
   | 'cfPassword';
 
-const WhatAboutYouScreen = ({ navigation }: any) => {
+interface SignInProps {
+  signUpAction: (payload : requestParams) => void;
+  signUpState: signUpState;
+  navigation: any;
+}
+
+const WhatAboutYouScreen = (props : SignInProps) => {
+  const { navigation, signUpState, signUpAction } = props;
   const [firstName, changeFirstName] = React.useState<string>('');
   const [lastName, changeLastName] = React.useState<string>('');
   const [email, changeEmail] = React.useState<string>('');
@@ -32,6 +45,19 @@ const WhatAboutYouScreen = ({ navigation }: any) => {
   const showPassword = () => {
     setShow(!show);
   };
+
+  React.useEffect(() => {
+    if (signUpState.isSignedUp) {
+      navigation.navigate("BirthdayScreen");
+    }
+  }, [signUpState.isSignedUp])
+
+  React.useEffect(() => {
+    if (signUpState.error !== "") {
+      setStatus('email');
+      setError(signUpState.error);
+    }
+  }, [signUpState.error]);
   
   const showConfirmPassword = () => {
     setShowCfPassword(!showCfPassword);
@@ -60,7 +86,7 @@ const WhatAboutYouScreen = ({ navigation }: any) => {
       changePhoneNumber('');
       changePassword('');
       changeCfPassword('');
-      navigation.navigate("BirthdayScreen");
+      signUpAction(getVideoRequestParams(email, password, `${firstName} ${lastName}`, phoneNumber));
     }
   };
 
@@ -302,4 +328,16 @@ const WhatAboutYouScreen = ({ navigation }: any) => {
   );
 };
 
-export default WhatAboutYouScreen;
+function mapStateToProps(state: RootState) {
+  return {
+    signUpState: state.signUp
+  }
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return {
+    signUpAction: (payload : requestParams) => dispatch(signUpAction.actionSignUp(payload)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WhatAboutYouScreen);

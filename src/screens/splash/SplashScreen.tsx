@@ -1,18 +1,26 @@
 import * as React from "react";
 import { View, Image } from "react-native";
 import styles from "./SplashStyles";
+import { retrieveData, importData } from '../../helper/asyncStorage';
+
 
 const SplashScreen = ({ navigation }: any) => {
+
   React.useEffect(() => {
-    const timerid = setTimeout(() => {
-      navigation.navigate("SignInScreen");
-    }, 1000);
-    return () => {
-      if (timerid) {
-        clearTimeout(timerid);
+    retrieveData('LoginStatus').then((status) => {
+      if (status === 'true') {
+        navigation.navigate("PickCategoriesScreen");
+        console.log('status', status);
+      } else {
+        navigation.navigate("SignInScreen");
+        console.log('error')
       }
-    };
+    })
   }, []);
+
+  React.useEffect(() => {
+    importData();
+  }, [])
 
   return (
     <View>

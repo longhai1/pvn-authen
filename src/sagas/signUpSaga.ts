@@ -1,27 +1,20 @@
 import { call, put } from 'redux-saga/effects';
 import request from '../services/auth.service';
-import { AsyncStorage } from 'react-native';
+import { requestParams } from '../services/auth.type';
 
-function* saveStatusToStore() {
-  yield AsyncStorage.multiSet(
-    [['LoginStatus', 'true']],
-    err => {
-      console.log('ERROR saving status: ', err);
-    },
+function* postSignUpAction(payload: requestParams) {
+  const { response, error } = yield call(request.signUp, payload);
+  console.log(
+    `Sign Up Saga - postSignUpAction: ${payload}`,
   );
-}
-
-function* postSignUpAction(payload: any) {
-    const response = yield call(request.signUp, payload);
-    console.log(
-      `Sign Up Saga - postSignUpAction: ${payload}`,
-    );
-  if (response.data.status === 200) {
+  if (response) {
+    console.log(response)
     yield put({ type: 'SIGNUP_SUCCESS' });
-    yield call(saveStatusToStore);
   } else  {
-    yield put({ type: 'SIGNUP_FAILURE' })
+    console.log(error);
+    yield put({ type: 'SIGNUP_FAILURE' });
   }
+  yield put({ type: 'REMOVE_SIGNUP' });
 }
 
 export default function*(action : any) {

@@ -1,17 +1,22 @@
+type ActionPayload = {
+  type: string;
+  payload: any;
+}
+
 export type signUpState = {
     isLoading: boolean;
-    isLoggedIn: boolean;
+    isSignedUp: boolean;
     error: string;
 }
 
 const initState = {
     isLoading: false,
-    isLoggedIn: false,
+    isSignedUp: false,
     error: '',
 };
   
-const signUpReducer = (state : signUpState = initState, type : string) => {
-    console.log(`signUpReducer type: ${type}`);
+const signUpReducer = (state : signUpState = initState, { type, payload } : ActionPayload) => {
+  console.log(`signUpReducer type: ${type} with payload: ${payload}`);
     switch (type) {
       case "HANDLE_SIGNUP":
         return {
@@ -22,15 +27,20 @@ const signUpReducer = (state : signUpState = initState, type : string) => {
         return {
           ...state,
           isLoading: false,
-          isLoggedIn: true,
+          isSignedUp: true,
           error: ""
         };
       case "SIGNUP_FAILURE":
         return {
           ...state,
           isLoading: false,
-          error: "Sign up fail"
+          error: "Sign up failed"
         };
+      case "REMOVE_SIGNUP": 
+        return {
+          ...state,
+          isSignedUp: false
+        }
       default:
         return state;
     }

@@ -23,7 +23,8 @@ const loginReducer = (state : loginState = initState, { type , payload } : Actio
       case "HANDLE_LOGIN":
         return {
           ...state,
-          isLoading: true
+          isLoading: true,
+          error: ""
         };
       case "LOGIN_SUCCESS":
         return {
@@ -37,7 +38,7 @@ const loginReducer = (state : loginState = initState, { type , payload } : Actio
         return {
           ...state,
           isLoading: false,
-          error: "Login fail"
+          error: payload
         };
       case "LOGOUT": 
         return {
